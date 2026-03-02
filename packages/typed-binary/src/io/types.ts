@@ -1,6 +1,6 @@
 export type Endianness = 'big' | 'little';
 
-export type BufferView = ArrayLike<number> & ArrayBufferView;
+export type BufferView = ArrayLike<number | bigint> & ArrayBufferView;
 
 export interface ISerialInput {
   readBool(): boolean;
@@ -14,8 +14,11 @@ export interface ISerialInput {
   readUint16(): number;
   readInt32(): number;
   readUint32(): number;
+  readInt64(): bigint;
+  readUint64(): bigint;
   readFloat16(): number;
   readFloat32(): number;
+  readFloat64(): number;
   readString(): string;
   readSlice(bufferView: BufferView, offset: number, byteLength: number): void;
   seekTo(offset: number): void;
@@ -36,8 +39,11 @@ export interface ISerialOutput {
   writeUint16(value: number): void;
   writeInt32(value: number): void;
   writeUint32(value: number): void;
+  writeInt64(value: bigint): void;
+  writeUint64(value: bigint): void;
   writeFloat16(value: number): void;
   writeFloat32(value: number): void;
+  writeFloat64(value: number): void;
   writeString(value: string): void;
   writeSlice(bufferView: BufferView): void;
   seekTo(offset: number): void;

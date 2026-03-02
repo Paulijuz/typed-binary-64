@@ -255,6 +255,66 @@ export class Uint32Schema extends Schema<number> {
 export const u32: Uint32Schema = new Uint32Schema();
 
 ////
+// i64
+////
+
+export class Int64Schema extends Schema<bigint> {
+  /**
+   * The maximum number of bytes this schema can take up.
+   *
+   * Alias for `.measure(MaxValue).size`
+   */
+  readonly maxSize = 8;
+
+  read(input: ISerialInput): bigint {
+    return input.readInt64();
+  }
+
+  write(output: ISerialOutput, value: bigint): void {
+    output.writeInt64(value);
+  }
+
+  measure(
+    _: bigint | MaxValue,
+    measurer: IMeasurer = new Measurer(),
+  ): IMeasurer {
+    return measurer.add(8);
+  }
+}
+
+export const i64: Int64Schema = new Int64Schema();
+
+////
+// u32
+////
+
+export class Uint64Schema extends Schema<bigint> {
+  /**
+   * The maximum number of bytes this schema can take up.
+   *
+   * Alias for `.measure(MaxValue).size`
+   */
+  readonly maxSize = 8;
+
+  read(input: ISerialInput): bigint {
+    return input.readUint64();
+  }
+
+  write(output: ISerialOutput, value: bigint): void {
+    output.writeUint64(value);
+  }
+
+  measure(
+    _: bigint | MaxValue,
+    measurer: IMeasurer = new Measurer(),
+  ): IMeasurer {
+    return measurer.add(8);
+  }
+}
+
+export const u64: Uint64Schema = new Uint64Schema();
+
+////
 // f16
 ////
 
@@ -313,3 +373,33 @@ export class Float32Schema extends Schema<number> {
 }
 
 export const f32: Float32Schema = new Float32Schema();
+
+////
+// f64
+////
+
+export class Float64Schema extends Schema<number> {
+  /**
+   * The maximum number of bytes this schema can take up.
+   *
+   * Alias for `.measure(MaxValue).size`
+   */
+  readonly maxSize = 8;
+
+  read(input: ISerialInput): number {
+    return input.readFloat64();
+  }
+
+  write(output: ISerialOutput, value: number): void {
+    output.writeFloat64(value);
+  }
+
+  measure(
+    _: number | MaxValue,
+    measurer: IMeasurer = new Measurer(),
+  ): IMeasurer {
+    return measurer.add(8);
+  }
+}
+
+export const f64: Float64Schema = new Float64Schema();

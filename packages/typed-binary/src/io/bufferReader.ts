@@ -53,6 +53,18 @@ export class BufferReader extends BufferIOBase implements ISerialInput {
     return value;
   }
 
+  readInt64(): bigint {
+    const value = this.dataView.getBigInt64(this.byteOffset, this.littleEndian);
+    this.byteOffset += 8;
+    return value;
+  }
+
+  readUint64(): bigint {
+    const value = this.dataView.getBigUint64(this.byteOffset, this.littleEndian);
+    this.byteOffset += 8;
+    return value;
+  }
+
   readFloat16(): number {
     const value = this.dataView.getUint16(this.byteOffset, this.littleEndian);
     this.byteOffset += 2;
@@ -62,6 +74,12 @@ export class BufferReader extends BufferIOBase implements ISerialInput {
   readFloat32(): number {
     const value = this.dataView.getFloat32(this.byteOffset, this.littleEndian);
     this.byteOffset += 4;
+    return value;
+  }
+
+  readFloat64(): number {
+    const value = this.dataView.getFloat64(this.byteOffset, this.littleEndian);
+    this.byteOffset += 8;
     return value;
   }
 

@@ -9,7 +9,7 @@ type TypedArrayConstructor<T> = {
 };
 
 export class TypedArraySchema<
-  TTypedArray extends ArrayLike<number> & ArrayBufferView,
+  TTypedArray extends ArrayLike<number | bigint> & ArrayBufferView,
 > extends Schema<TTypedArray> {
   public readonly byteLength: number;
 
@@ -60,6 +60,10 @@ export const u32Array = (length: number): TypedArraySchema<Uint32Array> =>
   new TypedArraySchema(length, Uint32Array);
 
 // @__NO_SIDE_EFFECTS__
+export const u64Array = (length: number): TypedArraySchema<BigUint64Array> =>
+  new TypedArraySchema(length, BigUint64Array);
+
+// @__NO_SIDE_EFFECTS__
 export const i8Array = (length: number): TypedArraySchema<Int8Array> =>
   new TypedArraySchema(length, Int8Array);
 
@@ -70,6 +74,10 @@ export const i16Array = (length: number): TypedArraySchema<Int16Array> =>
 // @__NO_SIDE_EFFECTS__
 export const i32Array = (length: number): TypedArraySchema<Int32Array> =>
   new TypedArraySchema(length, Int32Array);
+
+// @__NO_SIDE_EFFECTS__
+export const i64Array = (length: number): TypedArraySchema<BigInt64Array> =>
+  new TypedArraySchema(length, BigInt64Array);
 
 // @__NO_SIDE_EFFECTS__
 export const f32Array = (length: number): TypedArraySchema<Float32Array> =>

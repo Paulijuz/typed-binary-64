@@ -8,8 +8,11 @@ export {
   u16,
   i32,
   u32,
+  i64,
+  u64,
   f16,
   f32,
+  f64,
   string,
 } from './structure/baseTypes.ts';
 export { chars } from './structure/chars.ts';
@@ -22,13 +25,15 @@ export { tupleOf } from './structure/tuple.ts';
 export {
   f32Array,
   f64Array,
+  i8Array,
   i16Array,
   i32Array,
-  i8Array,
-  u16Array,
-  u32Array,
+  i64Array,
   u8Array,
   u8ClampedArray,
+  u16Array,
+  u32Array,
+  u64Array,
 } from './structure/typedArray.ts';
 export { MaxValue } from './structure/types.ts';
 
